@@ -30,8 +30,13 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter{
 		
 		user.setId(id);
 		user.setPassword(password);
-		
-		User authUser = userService.LoginAuth(user);
+		User authUser = new User();
+		try {
+			authUser = userService.LoginAuth(user);
+		}catch(NullPointerException e) {
+			response.sendRedirect(request.getContextPath()+"/user/login");
+			return false;
+		}
 		
 		if(authUser == null) {
 			response.sendRedirect(request.getContextPath()+"/user/login");
@@ -39,7 +44,7 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter{
 		}
 		
 		HttpSession session = request.getSession(true);
-		session.setAttribute("authUser", user);
+		session.setAttribute("authUser", authUser);
 		response.sendRedirect(request.getContextPath());
 		
 		return false;

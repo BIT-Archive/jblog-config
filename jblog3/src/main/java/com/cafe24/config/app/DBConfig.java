@@ -29,7 +29,7 @@ public class DBConfig {
 		basicDataSource.setUrl(env.getProperty("jdbc.url"));
 		basicDataSource.setUsername(env.getProperty("jdbc.userName"));
 		basicDataSource.setPassword(env.getProperty("jdbc.password"));
-		
+		 
 		basicDataSource.setInitialSize(env.getProperty("jdbc.initialSize", Integer.class));
 		basicDataSource.setMaxActive(env.getProperty("jdbc.maxActive", Integer.class));
 		
