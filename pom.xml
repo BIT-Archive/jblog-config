@@ -220,8 +220,8 @@
 	</build>
 	
   <modules>
-  	<module>jblog3</module>
+
   	<module>jblog2-xml-config</module>
-  	<module>jblog2-appinit</module>
+
   </modules>
 </project>
