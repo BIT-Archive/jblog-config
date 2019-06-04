@@ -45,7 +45,6 @@ public class BlogController {
 		return "blog/blog-main";
 	}
 
-	@Auth
 	@RequestMapping(value="/admin/basic", method=RequestMethod.GET)
 	public String admin_get(@PathVariable("id") String id,
 							HttpSession session,
@@ -71,7 +70,7 @@ public class BlogController {
 		return "redirect:/"+ URLEncoder.encode(id);
 	}
 	
-	@Auth
+
 	@RequestMapping(value="/admin/write", method=RequestMethod.GET)
 	public String write_get(@PathVariable("id") String id,
 						Model model,
@@ -97,7 +96,6 @@ public class BlogController {
 		return "redirect:/"+ URLEncoder.encode(id);
 	}
 	
-	@Auth
 	@RequestMapping(value="/admin/category")
 	public String category(@PathVariable("id") String id,
 						Model model,
@@ -109,7 +107,6 @@ public class BlogController {
 		return "blog/blog-admin-category";
 	}
 	
-	@Auth
 	@RequestMapping(value="/admin/delete")
 	public @ResponseBody String delete_ajax(@PathVariable("id") String id,
 						Model model,
@@ -123,7 +120,6 @@ public class BlogController {
 		return "삭제 성공!";
 	}
 	
-	@Auth
 	@RequestMapping(value="/admin/category_new")
 	public @ResponseBody Category delete_ajax(@PathVariable("id") String id,
 						Model model,

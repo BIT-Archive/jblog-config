@@ -5,7 +5,7 @@
     <artifactId>JBLOGS</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>jblog2-java-config</artifactId>
+  <artifactId>jblog3</artifactId>
   <packaging>war</packaging>
   
   
@@ -215,7 +215,7 @@
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<configuration>
 					<url>http://127.0.0.1:8080/manager/text</url>
-					<path>/jblog2-java-config</path>
+					<path>/jblog3</path>
 					<username>admin</username>
 					<password>manager</password>
 				</configuration>
