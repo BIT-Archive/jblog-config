@@ -235,8 +235,8 @@
 	</build>
 
 	<modules>
-
 		<module>jblog2-xml-config</module>
+		<module>jblog3</module>
 
 	</modules>
 </project>
