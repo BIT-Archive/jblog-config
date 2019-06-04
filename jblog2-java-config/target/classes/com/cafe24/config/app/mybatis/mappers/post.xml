@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="post">
+
+	<select id="getList" parameterType="long" resultType="post">
+	<![CDATA[
+		SELECT title, no, reg_date, contents, category_no
+		FROM post
+		WHERE category_no = #{category_no}
+		order by reg_date DESC;
+		
+		]]>
+	</select>
+	
+	<select id="getPost" parameterType="long" resultType="post">
+	<![CDATA[
+		SELECT category_no, title, no,  reg_date, contents
+		FROM post
+		WHERE no = #{post_no}
+		
+		]]>
+	</select>
+	
+	<select id="getNoById" parameterType="string">
+		
+	</select>
+	
+	<select id="recentList" parameterType="string" resultType="post">
+		<![CDATA[
+	
+		select c.id, p.category_no, p.title, p.no, p.reg_date, p.contents
+			from post p, category c
+		where p.category_no = c.no
+		AND c.id=#{id}
+		ORDER BY reg_date DESC;
+		
+		]]>
+	
+	</select>
+	
+	<insert id="insertPost" parameterType="post">
+		<![CDATA[
+	
+		insert into post
+			values(null, #{title}, #{contents}, now(), #{category_no})		
+		]]>
+		
+	</insert>
+	
+	<delete id="deletePostByCategory" parameterType="long">
+		<![CDATA[
+	
+		delete from post
+			where category_no = #{no}		
+		]]>
+	</delete>
+
+</mapper>
+

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="category">
+
+	<select id="getList" parameterType="string" resultType="category">
+	<![CDATA[
+	
+		select name, no, description
+			from category
+		where id = #{id}
+		group by name
+		order by reg_date ASC
+	]]>
+	
+	
+	</select>
+	<select id="getLastCategory" parameterType="string" resultType="category">
+	<![CDATA[
+		select *
+		from category
+		where id = #{id}
+		order by reg_date DESC
+		limit 0, 1;
+	]]>
+	
+	
+	</select>
+	
+	<select id="getListInfo" parameterType="string" resultType="category">
+	<![CDATA[	
+		select c.no, c.name, count(p.no) as count, description
+		from category c, post p
+		where c.no = p.category_no
+		and id=#{id}
+		group by c.name
+	]]>
+	</select>
+	
+	<select id="getNoById" parameterType="string">
+		<![CDATA[
+	
+		select DISTINCT(no)
+			from category
+		where id = #{id}
+		
+		]]>
+	
+	</select>
+	
+	<insert id="init" parameterType="user">
+	
+		<![CDATA[
+	
+		insert into category
+			values(null, "미분류", "카테고리를 지정하지 않은 경우", now(), #{id}, "spring-logo.jpg")
+		
+		]]>
+	
+	</insert>
+	<insert id="createCategory" parameterType="category">
+	
+		<![CDATA[
+	
+		insert into category
+			values(null, #{name}, #{description}, now(), #{id})
+		
+		]]>
+	
+	</insert>
+	
+	<delete id="deleteCategory" parameterType="category">
+		<![CDATA[
+	
+		delete from category
+		 where id=#{id} AND no=#{no}
+		
+		]]>
+	
+	</delete>
+
+</mapper>
+
