@@ -1,10 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.cafe24</groupId>
-  <artifactId>JBLOGS</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.cafe24</groupId>
+	<artifactId>JBLOGS</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -75,6 +77,23 @@
 			<version>1.2</version>
 		</dependency>
 
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
+			<version>2.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<scope>provided</scope>
+			<version>2.1</version>
+		</dependency>
+
+
+
 		<!-- Common DBCP -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
@@ -82,7 +101,7 @@
 			<version>1.4</version>
 		</dependency>
 
-		
+
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -103,7 +122,7 @@
 			<artifactId>jackson-core</artifactId>
 			<version>2.4.4</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.fasterxml.jackson.module</groupId>
 			<artifactId>jackson-module-parameter-names</artifactId>
@@ -167,7 +186,7 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.2.0.Final</version>
 		</dependency>
-		
+
 		<!-- test -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -188,10 +207,10 @@
 			<version>1.19.0</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 
 	</dependencies>
-	
+
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
@@ -214,10 +233,10 @@
 			</plugin>
 		</plugins>
 	</build>
-	
-  <modules>
 
-  	<module>jblog2-xml-config</module>
+	<modules>
 
-  </modules>
+		<module>jblog2-xml-config</module>
+
+	</modules>
 </project>

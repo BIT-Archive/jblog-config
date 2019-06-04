@@ -10,6 +10,22 @@
 	<artifactId>jblog2-xml-config</artifactId>
 	<packaging>war</packaging>
 
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
+			<version>2.5</version>
+		</dependency>	
+		
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<scope>provided</scope>
+			<version>2.1</version>
+		</dependency>
+	</dependencies>
+	
 
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
