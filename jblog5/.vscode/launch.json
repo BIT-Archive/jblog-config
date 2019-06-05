@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - BootApplication",
+            "request": "launch",
+            "mainClass": "com.cafe24.jblog2.BootApplication",
+            "projectName": "jblog5"
+        }
+    ]
+}
