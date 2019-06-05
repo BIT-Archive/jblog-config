@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+
+	<select id="getByNo" resultType="boardvo" parameterType="int">
+	<![CDATA[
+	
+		select *
+			from board
+		where no= #{no}
+	]]>
+	
+	
+	</select>
+	
+	<select id="getList" resultType="boardvo">
+	<![CDATA[
+	
+		select a.no, a.title, a.hit, a.reg_date, a.hit, a.user_no, b.name, a.depth
+			from board a, user b
+		where a.user_no = b.no
+		order by group_no DESC,
+				 order_no ASC
+	]]>
+	
+	
+	</select>
+	
+	<select id="getGroup" parameterType="long" resultType="boardvo">
+	<![CDATA[
+	
+		select no, group_no, depth, user_no
+			from board
+		where no = #{no};
+	]]>
+	
+	
+	</select>
+	
+	
+	<insert id="insert_post" parameterType="boardvo">
+	<![CDATA[
+	
+		insert into board
+			values (null, #{title}, #{contents}, 0, now(), (SELECT ifnull(MAX(group_no)+1, 1) FROM board b) , 1 , 0, #{user_no})
+			
+	]]>
+	</insert>
+	
+	<insert id="insert_reply" parameterType="boardvo">
+	<![CDATA[
+	
+		insert into board
+			values (null, #{title}, #{contents}, 0, now(), #{group_no} , 
+																			(SELECT b.order_no+1
+																			 FROM 	board b
+																			 WHERE	no=#{parent_no}) , 
+																			 
+																			(SELECT b.depth+1
+																			 FROM board b
+																			 WHERE 	no=#{parent_no}),
+																			 #{user_no})
+			
+	]]>
+	</insert>
+	<update id="update_order" parameterType="boardvo">
+	<![CDATA[
+	 	UPDATE board
+		SET order_no = order_no + 1
+		WHERE group_no = #{group_no}
+		AND order_no >= (SELECT b.order_no+1 FROM (select * from board) b WHERE b.no=#{parent_no})
+		AND no != (SELECT max(T.no) from (select * from board) T);
+
+	]]>
+	
+	</update>
+	
+	
+	<update id="update_post" parameterType="boardvo">
+	<![CDATA[
+	
+		update board
+			set title = #{title}, contents = #{contents}
+		where no = #{no}
+			
+	]]>
+	
+	</update>
+	
+	<update id="delete" parameterType="boardvo">
+	<![CDATA[
+	
+		update board
+			set title='삭제된 게시물입니다.', contents = '삭제된 게시물입니다',
+				hit = 0, reg_date=0000-00-00
+			where no = #{no};
+			 
+			
+	]]>
+	
+	
+	</update>
+	
+
+</mapper>
+

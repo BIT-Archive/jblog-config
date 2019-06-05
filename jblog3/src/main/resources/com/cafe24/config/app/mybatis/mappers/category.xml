@@ -52,7 +52,7 @@
 		<![CDATA[
 	
 		insert into category
-			values(null, "미분류", "카테고리를 지정하지 않은 경우", now(), #{id}, "spring-logo.jpg")
+			values(null, "미분류", "카테고리를 지정하지 않은 경우", now(), #{id})
 		
 		]]>
 	

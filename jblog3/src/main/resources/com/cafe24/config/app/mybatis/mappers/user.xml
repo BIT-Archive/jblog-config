@@ -13,12 +13,12 @@
 	
 	</select>
 	
-	<select id="LoginAuth" resultType="user">
+	<select id="LoginAuth" parameterType="user" resultType="user">
 	
 	<![CDATA[
-		select id, name, password, reg_date
-		from user
-		where id=#{id} AND password=#{password}
+		SELECT *
+		FROM user
+		WHERE id=#{id} AND password=#{password}
 		]]>
 	
 	
